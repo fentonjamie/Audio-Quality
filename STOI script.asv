@@ -1,0 +1,22 @@
+clean = audioread('speech original.wav');
+
+recorder1 = audiorecorder(16000,16,1);
+
+%need to find time difference between the two signals and align them
+
+
+b = audioread('recording.wav');
+
+[Aa, Ba] = alignsignals(a, b);
+
+if length(CleanA) == length(a)
+    disp('they match')
+elseif length(Aa) > length(Ba)
+    Ba = [Ba; zeros(length(Aa)-length(Ba),1)];
+elseif length(Ba) > length(Aa)
+    Aa = [Aa; zeros(length(Ba)-length(Aa),1)];
+end
+
+d = stoi(Aa, Ba, 16000);
+
+score = stoi(clean, degraded, Fs);
